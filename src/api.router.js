@@ -20,7 +20,7 @@ router.post('/links', (req, res) => {
   }
 
   req.app.links[req.body.code] = req.body
-  res.send(req.body)
+  res.status(201).send(req.body)
 })
 
 module.exports = router

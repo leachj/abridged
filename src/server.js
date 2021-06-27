@@ -5,9 +5,9 @@ const redirectRouter = require('./redirect.router')
 
 app.use(express.json());
 
-// links need to be stored somwhere, in this simple app they are store in memory within the
-// express app. In a production add this would need to be some sort of persistent store e.g. 
-// a DB or similar
+// links need to be stored somewhere, in this simple app they are store in memory within the
+// express app. In a production app this would need to be some sort of persistent store e.g. 
+// a DB or file
 app.links = {}
 
 app.use('/api/v1', apiRouter)
