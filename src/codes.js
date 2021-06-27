@@ -15,9 +15,9 @@ const generate = (existingCodes) => {
   // 2) something that generates longer codes if the existing code space is full.
   // 3) something that generates friendlier codes rather than just random ones
   while(true) {
-    let id = idGenerator()
-    if(!existingCodes.includes(id)){
-      return id
+    let code = idGenerator()
+    if(validate(code, existingCodes)){
+      return code
     } 
   }
 }
