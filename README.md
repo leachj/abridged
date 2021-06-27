@@ -32,7 +32,7 @@ Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://loc
 
 ## TODO
 
-This is a simple service, there any many things still to do.
+This is a simple service, it was built in a test drived way to meet an initial set of requirements. As a result there are a number of tasks still to be done:
 
 - Persist links
 - Package up this into something that is more easily deployable, docker for example
