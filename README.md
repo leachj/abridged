@@ -22,9 +22,13 @@ POST to /api/v1/links
     "target": "http://example.com"
 }`
 
+For example:
+
+`curl -X POST -H "Content-Type: application/json" -d '{"code": "news", "target": "http://news.bbc.co.uk"}' http://localhost:3000/api/v1/links`
+
 ## Redirecting
 
-Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://localhost:3000/example 
+Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://localhost:3000/news 
 
 ## TODO
 
