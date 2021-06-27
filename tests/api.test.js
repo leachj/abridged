@@ -1,8 +1,6 @@
 const { expect } = require("@jest/globals");
-const { default: axios } = require("axios");
 const request = require('supertest');
-const app = require("../src/index");
-const abridged = require('../src/index')
+const abridged = require('../src/server')
 
 describe('api to manage links', () => {
 
@@ -19,17 +17,6 @@ describe('api to manage links', () => {
     expect(response.body).toMatchObject(link)
 
     expect(abridged.links[link.code]).toMatchObject(link)
-
-  });
-
-  it('Should be redirected when requesting a valid link', async () => {
-
-    const link = {code: 'example', target: 'http://example.com'}
-    abridged.links[link.code] = link
-
-    const response = await request(abridged).get('/example')
-    expect(response.status).toBe(302)
-    expect(response.headers.location).toBe(link.target)
 
   });
 
