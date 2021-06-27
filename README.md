@@ -52,7 +52,7 @@ Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://loc
 This is a simple service, it was built in a test drived way to meet an initial set of requirements. As a result there are a number of tasks still to be done:
 
 - Persist links.
-- Better generation of Ids, see the code for issues.
+- Better generation of Ids, see codes.js for issues.
 - Package up this into something that is more easily deployable, docker for example.
 - Consider resilience, ideally this would be deployed to the cloud. With the approrpiate persistence it could be stateless and deployed in a serverless way.
 - Consider security of links, start with adding to the banned codes.
