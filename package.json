@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "nanoid": "^3.1.23",
     "uuid": "^8.3.2",
     "valid-url": "^1.0.9"
   },

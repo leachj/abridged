@@ -9,7 +9,7 @@ describe('api to manage links', () => {
   });
 
 
-  it('Should be able to create a link', async () => {
+  it('Should be able to create a link with a provided code', async () => {
 
     const link = {code: 'example', target: 'http://example.com'}
     const response = await request(abridged).post('/api/v1/links').send(link).set('Accept', 'application/json')
@@ -17,6 +17,17 @@ describe('api to manage links', () => {
     expect(response.body).toMatchObject(link)
 
     expect(abridged.links[link.code]).toMatchObject(link)
+
+  });
+
+  it('Should be able to create a link with a generated code', async () => {
+
+    const link = {target: 'http://example.com'}
+    const response = await request(abridged).post('/api/v1/links').send(link).set('Accept', 'application/json')
+    expect(response.status).toBe(201)
+    expect(response.body).toMatchObject(link)
+
+    expect(abridged.links[response.body.code]).toMatchObject(link)
 
   });
 
@@ -31,9 +42,10 @@ describe('api to manage links', () => {
 
   });
 
-  it('Should not be able to create a link without a code', async () => {
+  it('Should not be able to create a link to an existing code', async () => {
 
-    const link = {target: 'http://example.com'}
+    abridged.links = {existing: {}}
+    const link = {code: 'existing', target: 'http://example.com'}
     const response = await request(abridged).post('/api/v1/links').send(link).set('Accept', 'application/json')
     expect(response.status).toBe(400)
     expect(response.body.error).toBe('invalid code')

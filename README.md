@@ -18,7 +18,24 @@ Links are managed through a REST API.
 POST to /api/v1/links
 
 `{
-    "code": "example",
+    "target": "http://example.com"
+}`
+
+For example:
+
+`curl -X POST -H "Content-Type: application/json" -d '{"target": "http://news.bbc.co.uk"}' http://localhost:3000/api/v1/links`
+
+Responds with the short link code:
+
+`{
+    "code": "wtj44j",
+    "target": "http://example.com"
+}`
+
+Or you can specify your own code: 
+
+`{
+    "code": "news",
     "target": "http://example.com"
 }`
 
@@ -35,7 +52,8 @@ Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://loc
 This is a simple service, it was built in a test drived way to meet an initial set of requirements. As a result there are a number of tasks still to be done:
 
 - Persist links.
-- Preven overwriting of links.
+- Deal with overwriting of links, if you specify an existing code it will override its target.
+- Better generation of Ids, see the code for issues.
 - Package up this into something that is more easily deployable, docker for example.
 - Consider resilience, ideally this would be deployed to the cloud. With the approrpiate persistence it could be stateless and deployed in a serverless way.
 - Consider security of links, start with adding to the banned codes.
