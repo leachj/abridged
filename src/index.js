@@ -1,19 +1,22 @@
 const express = require('express')
-const { v4 } = require('uuid');
 const app = express()
 const port = 3000
 
 app.use(express.json());
 
-// links need to be stored somwhere, in this simepl app they are store in memory within the
+// links need to be stored somwhere, in this simple app they are store in memory within the
 // express app. In a production add this would need to be some sort of persistent store e.g. 
 // a DB or similar
 app.links = {}
 
+app.get('/:code', (req, res) => {
+  const link = req.app.links[req.params.code]
+  res.redirect(link.target)
+})
+
 app.post('/api/v1/links', (req, res) => {
-  const id = v4()
-  req.app.links[id] = {id, ...req.body}
-  res.send(req.app.links[id])
+  req.app.links[req.body.code] = req.body
+  res.send(req.body)
 })
 
 app.listen(port, () => {
