@@ -34,9 +34,11 @@ Redirects are perfromed by visiting http://localhost:3000/{code} e.g. http://loc
 
 This is a simple service, it was built in a test drived way to meet an initial set of requirements. As a result there are a number of tasks still to be done:
 
-- Persist links
-- Package up this into something that is more easily deployable, docker for example
+- Persist links.
+- Preven overwriting of links.
+- Package up this into something that is more easily deployable, docker for example.
+- Consider resilience, ideally this would be deployed to the cloud. With the approrpiate persistence it could be stateless and deployed in a serverless way.
 - Consider security of links, start with adding to the banned codes.
-- Finish the API, you can only create things at the moment, add gets and deletes
-- Add some statistics to link accesses
-- Consider some cleanup tasks to delete old links and stop the database growing indefinitely
+- Finish the API, you can only create things at the moment, add gets and deletes, define the permission model for this.
+- Add some statistics to link accesses.
+- Consider some cleanup tasks to delete old links and stop the database growing indefinitely.
