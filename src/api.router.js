@@ -3,9 +3,6 @@ const router = express.Router()
 const validUrl = require('valid-url');
 const codes = require('./codes')
 
-
-
-
 router.post('/links', (req, res) => {
 
   let code = req.body.code
